@@ -6,13 +6,12 @@ from textsummarizer.utils.common import get_size
 from pathlib import Path
 from textsummarizer.entity import DataIngestionConfig
 
-
 class DataIngestion:
     def __init__(self, config: DataIngestionConfig):
         self.config = config
 
 
-    
+     
     def download_file(self):
         if not os.path.exists(self.config.local_data_file):
             filename, headers = request.urlretrieve(
@@ -35,3 +34,4 @@ class DataIngestion:
         os.makedirs(unzip_path, exist_ok=True)
         with zipfile.ZipFile(self.config.local_data_file, 'r') as zip_ref:
             zip_ref.extractall(unzip_path)
+        
